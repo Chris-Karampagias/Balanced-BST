@@ -135,6 +135,99 @@ class BST {
     }
     return false;
   }
+
+  leverOrder(func = []) {
+    if (!this.root) {
+      return undefined;
+    }
+    const queue = [];
+    queue.push(this.root);
+    if (!Array.isArray(func)) {
+      while (queue.length != 0) {
+        if (queue[0].left != null) {
+          queue.push(queue[0].left);
+        }
+        if (queue[0].right != null) {
+          queue.push(queue[0].right);
+        }
+        let nodeVal = queue.shift().value;
+        func(nodeVal);
+      }
+      return;
+    } else {
+      while (queue.length != 0) {
+        if (queue[0].left != null) {
+          queue.push(queue[0].left);
+        }
+        if (queue[0].right != null) {
+          queue.push(queue[0].right);
+        }
+        let nodeVal = queue.shift().value;
+        func.push(nodeVal);
+      }
+      return func;
+    }
+  }
+
+  preOrder(func = []) {
+    if (!Array.isArray(func)) {
+      function traverse(node) {
+        func(node.value);
+        if (node.left) traverse(node.left);
+        if (node.right) traverse(node.right);
+      }
+      traverse(this.root);
+      return;
+    } else {
+      function traverse(node) {
+        func.push(node.value);
+        if (node.left) traverse(node.left);
+        if (node.right) traverse(node.right);
+      }
+      traverse(this.root);
+      return func;
+    }
+  }
+
+  postOrder(func = []) {
+    if (!Array.isArray(func)) {
+      function traverse(node) {
+        if (node.left) traverse(node.left);
+        if (node.right) traverse(node.right);
+        func(node.value);
+      }
+      traverse(this.root);
+      return;
+    } else {
+      function traverse(node) {
+        if (node.left) traverse(node.left);
+        if (node.right) traverse(node.right);
+        func.push(node.value);
+      }
+      traverse(this.root);
+      return func;
+    }
+  }
+
+  inOrder(func = []) {
+    if (!Array.isArray(func)) {
+      function traverse(node) {
+        if (node.left) traverse(node.left);
+        func(node.value);
+        if (node.right) traverse(node.right);
+      }
+      traverse(this.root);
+      return;
+    } else {
+      function traverse(node) {
+        if (node.left) traverse(node.left);
+        func.push(node.value);
+        if (node.right) traverse(node.right);
+      }
+      traverse(this.root);
+      return func;
+    }
+  }
 }
 
 function merge(left, right) {
