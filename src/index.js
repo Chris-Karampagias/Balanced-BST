@@ -264,7 +264,30 @@ class BST {
       return this.depth(root.right, node) + 1;
     }
   }
-}
 
-const tree = new BST([1, 2, 76, 4, 32, 7, 3, 5, 6, 12, 11, 18]);
-prettyPrint(tree.root);
+  isBalanced(root = this.root) {
+    if (!root) {
+      return true;
+    }
+    let left = root.left;
+    let right = root.right;
+    let leftHeight = this.height(left);
+    let rightHeight = this.height(right);
+
+    if (
+      Math.abs(leftHeight - rightHeight) <= 1 &&
+      this.isBalanced(left) == true &&
+      this.isBalanced(right) == true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  rebalance() {
+    const array = [];
+    this.leverOrder((node) => array.push(node));
+    this.root = this.buildTree(sortAndRemoveDuplicates(array));
+  }
+}
