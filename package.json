@@ -2,7 +2,8 @@
   "name": "balanced-bst",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "driver.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/Chris-Karampagias/Balanced-BST/issues"
   },
-  "homepage": "https://github.com/Chris-Karampagias/Balanced-BST#readme",
-  "devDependencies": {
-    "webpack-cli": "^5.1.4"
-  }
+  "homepage": "https://github.com/Chris-Karampagias/Balanced-BST#readme"
 }

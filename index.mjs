@@ -3,7 +3,7 @@ import {
   minValueNode,
   sortAndRemoveDuplicates,
   prettyPrint,
-} from "./helpers";
+} from "./helpers.mjs";
 
 class Node {
   constructor(value) {
@@ -291,3 +291,5 @@ class BST {
     this.root = this.buildTree(sortAndRemoveDuplicates(array));
   }
 }
+
+export { Node, BST };
